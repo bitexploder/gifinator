@@ -3,6 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io/ioutil"
+	"net/http"
 	"os"
 	"os/exec"
 	"regexp"
@@ -15,12 +17,29 @@ func main() {
 	var smallgif string
 	var maxedge int
 	var maxsize int
+	var url string
 
 	flag.StringVar(&path, "path", "", "path to the animated gif")
-	flag.StringVar(&smallgif, "smallgif", "resize.gif", "path to smaller animated gif")
+	flag.StringVar(&url, "url", "", "url for animated gif")
+	flag.StringVar(&smallgif, "smallgif", "/tmp/resize.gif", "path to smaller animated gif")
 	flag.IntVar(&maxedge, "maxedge", 128, "Maximum edge length allowed")
 	flag.IntVar(&maxsize, "maxsize", 65536, "Max file size allowed")
 	flag.Parse()
+
+	if url != "" && path != "" {
+		fmt.Println("Only url or path may be used")
+		os.Exit(1)
+	}
+
+	if url != "" {
+		path = "/tmp/download.gif"
+
+		err := getUrl(url, path)
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+	}
 
 	gi := NewGifInfo(path)
 	gi.cons = ImgCon{128, 1024 * 64}
@@ -47,7 +66,8 @@ func main() {
 				os.Exit(1)
 			}
 
-			fmt.Println("Winner")
+			fmt.Println("Orig gif: ", gi)
+			fmt.Println("New gif: ", newgi)
 			break
 		} else {
 		}
@@ -55,6 +75,24 @@ func main() {
 	}
 
 	os.Exit(0)
+}
+
+func getUrl(url string, path string) error {
+	res, err := http.Get(url)
+	if err != nil {
+		return err
+	}
+	image, err := ioutil.ReadAll(res.Body)
+	res.Body.Close()
+	if err != nil {
+		return err
+	}
+	err = ioutil.WriteFile(path, image, 0666)
+	if err != nil {
+		return err
+	}
+	return nil
+
 }
 
 type ImgCon struct {
@@ -75,6 +113,10 @@ func NewGifInfo(path string) *GifInfo {
 	gi := &GifInfo{}
 	gi.path = path
 	return gi
+}
+func (gi *GifInfo) String() string {
+	return fmt.Sprintf("[%dx%d] '%s' size:%d", gi.width, gi.height, gi.path, gi.fileInfo.Size())
+
 }
 
 func (gi *GifInfo) Resize(edgeLen int) (*GifInfo, error) {
