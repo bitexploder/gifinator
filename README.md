@@ -6,7 +6,7 @@ This tool is for you. Automate the tedious process of resizing an animated gif a
 
 Note: There are several other gifinators out there. This one is mine.
 
-Copyright notice: I have no idea who owns the copyright on the gifs in test-img. They aren't mine. 
+Copyright notice: I have no idea who owns the copyright on the gifs in test-img. They aren't mine. If they are yours and you don't want them in this repo, let me know. 
 
 # Installation
 
