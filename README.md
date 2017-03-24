@@ -18,7 +18,7 @@ For Go developers:
 
 `go get -u github.com/bitexploder/gifinator` and do the usual `go install`
 
-For everyone else: [Binary Releases](http://TBD)
+For everyone else: [Binary Releases](https://github.com/bitexploder/gifinator/releases)
 
 # Usage 
 
