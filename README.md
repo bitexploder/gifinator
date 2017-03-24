@@ -4,6 +4,8 @@ Ever wanted to turn an animated Gif into a Slack emoji?
 
 This tool is for you. Automate the tedious process of resizing an animated gif and tweaking things in tools like [ezgif](http://ezgif.com)
 
+Note: There are several other gifinators out there. This one is mine.
+
 # Installation
 
 You will need `gifsicle` available on your `PATH`
