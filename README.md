@@ -24,6 +24,10 @@ For Go developers:
 
 For everyone else: [Binary Releases](https://github.com/bitexploder/gifinator/releases)
 
+# Example
+
+[![asciicast](https://asciinema.org/a/14.png)](https://asciinema.org/a/14)
+
 # Usage 
 
 `gifinator -url http://example.com/animated.gif` -> outputs `/tmp/resize.gif`
