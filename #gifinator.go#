@@ -19,14 +19,14 @@ func main() {
 	var maxsize int
 	var url string
 	var verbose bool
-
+	
 	flag.StringVar(&path, "path", "", "path to the animated gif")
 	flag.StringVar(&url, "url", "", "url for animated gif")
 	flag.StringVar(&smallgif, "smallgif", "/tmp/resize.gif", "path to smaller animated gif")
 	flag.IntVar(&maxedge, "maxedge", 128, "Maximum edge length allowed")
 	flag.IntVar(&maxsize, "maxsize", 65536, "Max file size allowed")
 	flag.BoolVar(&verbose, "verbose", false, "Be more verbose with output")
-
+	
 	flag.Parse()
 
 	if url != "" && path != "" {
@@ -36,9 +36,7 @@ func main() {
 
 	if url != "" {
 		path = "/tmp/download.gif"
-		if verbose {
-			fmt.Printf("Beginning download of URL\n")
-		}
+
 		err := getUrl(url, path)
 		if err != nil {
 			fmt.Println(err)
@@ -57,9 +55,6 @@ func main() {
 	curEdge := gi.cons.MaxEdge
 	for ; curEdge >= 0; curEdge -= 4 {
 		newgi, err := gi.Resize(curEdge)
-		if verbose {
-			fmt.Printf("Edge len: %d got size %d\n", curEdge, newgi.fileInfo.Size())
-		}
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(1)
@@ -74,15 +69,10 @@ func main() {
 				os.Exit(1)
 			}
 
-			if verbose {
-				fmt.Println("Orig gif: ", gi)
-				fmt.Println("New gif: ", newgi)
-			}
-
+			fmt.Println("Orig gif: ", gi)
+			fmt.Println("New gif: ", newgi)
 			break
-		} else if curEdge <= 4 {
-			fmt.Println("Could not make it small enough. Sorry :(")
-			break
+		} else {
 		}
 		curEdge = curEdge - 1
 	}
