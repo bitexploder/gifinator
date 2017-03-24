@@ -30,9 +30,9 @@ For everyone else: [Binary Releases](https://github.com/bitexploder/gifinator/re
 
 # Usage 
 
-`gifinator -url http://example.com/animated.gif` -> outputs `/tmp/resize.gif`
-`gifinator -path /some/animated/image.gif` -> outputs `/tmp/resize.gif`
-`gifinator -url http://example.com/animated.gif -smallgif /some/other/path/file.gif` -> outputs `/some/other/path/file.gif`
+`gifinator -url http://example.com/animated.gif` -> outputs `/tmp/resize.gif`  
+`gifinator -path /some/animated/image.gif` -> outputs `/tmp/resize.gif`  
+`gifinator -url http://example.com/animated.gif -smallgif /some/other/path/file.gif` -> outputs `/some/other/path/file.gif`  
 
 Use path or url, but not both. Path is for local file system. Url is for an HTTP URL.
 
