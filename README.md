@@ -6,6 +6,8 @@ This tool is for you. Automate the tedious process of resizing an animated gif a
 
 Note: There are several other gifinators out there. This one is mine.
 
+Copyright notice: I have no idea who owns the copyright on the gifs in test-img. They aren't mine. 
+
 # Installation
 
 You will need `gifsicle` available on your `PATH`
