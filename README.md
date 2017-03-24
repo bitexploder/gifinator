@@ -10,7 +10,7 @@ You will need `gifsicle` available on your `PATH`
 
 On Apt-based systems: `apt-get install gifsicle` 
 
-On Mac: `brew install gifsicle curl`
+On Mac: `brew install gifsicle`
 
 On Windows: Find a windows binary release of gifsicle and make sure they are on your path.
 
