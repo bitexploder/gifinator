@@ -26,7 +26,7 @@ For everyone else: [Binary Releases](https://github.com/bitexploder/gifinator/re
 
 # Example
 
-[![asciicast](https://asciinema.org/a/108664)](https://asciinema.org/a/108664)
+[![asciicast](https://asciinema.org/a/108664.png)](https://asciinema.org/a/108664)
 
 # Usage 
 
